@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Campus Customs app check</title>
+  <style>
+    body {
+      margin: 0 auto;
+      max-width: 1100px;
+      padding: 2rem 1.25rem 4rem;
+      background: #f6f1e7;
+      color: #1c1915;
+      font: 1.05rem/1.55 Georgia, "Iowan Old Style", serif;
+    }
+    h1, h2 { color: #00356b; line-height: 1.2; }
+    h1 { font-size: 2rem; }
+    section { margin-top: 2.5rem; }
+    .question {
+      margin: 0.5rem 0 1rem;
+      padding: 0.8rem 1rem;
+      background: #fffdf8;
+      border-left: 4px solid #b0893e;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    figure { margin: 1.25rem 0 1.75rem; }
+    img { width: 100%; height: auto; border: 1px solid rgba(0, 53, 107, 0.16); background: #fffdf8; }
+    figcaption {
+      margin-top: 0.4rem;
+      color: #5c564c;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      font-size: 0.95rem;
+    }
+    p { max-width: 46rem; }
+  </style>
+</head>
+<body>
+  <h1>Campus Customs app check</h1>
+  <p>Three live Ask Dan chats on the running store, checked against <code>campus_customs.db</code>.</p>
+
+  <section>
+    <h2>1. Inventory and page context</h2>
+    <p class="question">How much is this, and do you have medium?</p>
+    <figure>
+      <img src="app_check_images/inventory_01.png" alt="Basic Hoodie Big Yale detail page with the size and stock table">
+      <figcaption>Product page for Basic Hoodie Big Yale, including the price and the size table.</figcaption>
+    </figure>
+    <figure>
+      <img src="app_check_images/inventory_02.png" alt="Ask Dan answering the price and medium question beside the stock table">
+      <figcaption>The question and Dan’s complete answer, with the same stock table still visible.</figcaption>
+    </figure>
+    <p>SQLite records <code>basic-hoodie-big-yale</code> at $68.00, with size M quantity 5. Dan answered that the Basic Hoodie Big Yale is $68 and that medium has 5 in stock, which matches the page and the database.</p>
+  </section>
+
+  <section>
+    <h2>2. Dynamic search and navigation</h2>
+    <p class="question">What hoodies do you have?</p>
+    <figure>
+      <img src="app_check_images/search_01.png" alt="Start of the hoodie search answer and the first three product cards">
+      <figcaption>The question, the full reply, and the first three hoodie cards.</figcaption>
+    </figure>
+    <figure>
+      <img src="app_check_images/search_02.png" alt="Overlapping view of the next hoodie cards">
+      <figcaption>Overlap into District Vit and Fencing cards, still showing the first row.</figcaption>
+    </figure>
+    <figure>
+      <img src="app_check_images/search_03.png" alt="Sailing and Squash hoodie cards appearing">
+      <figcaption>Sailing Left Chest Hoodie and Squash Left Chest Hoodie, with prices.</figcaption>
+    </figure>
+    <figure>
+      <img src="app_check_images/search_04.png" alt="Bottom of the last two hoodie cards">
+      <figcaption>The bottoms of the Sailing and Squash cards, including names, prices, and photos.</figcaption>
+    </figure>
+    <figure>
+      <img src="app_check_images/search_detail.png" alt="Sailing Left Chest Hoodie detail page">
+      <figcaption>Detail page opened from the Sailing Left Chest Hoodie card.</figcaption>
+    </figure>
+    <p>Dan reported 27 hoodies and showed eight cards. Each card’s name and $68.00 price matches SQLite for those product IDs. The Sailing card opened <code>/products/sailing-left-chest-hoodie</code>, titled Sailing Left Chest Hoodie at $68.00, the same record as the card.</p>
+  </section>
+
+  <section>
+    <h2>3. Problem 9 alternatives</h2>
+    <p class="question">Is this available in medium? If not, show me similar hoodies in medium.</p>
+    <figure>
+      <img src="app_check_images/alternatives_01.png" alt="Crew Left Chest Hoodie page with medium out of stock">
+      <figcaption>Crew Left Chest Hoodie, with size M marked out of stock.</figcaption>
+    </figure>
+    <figure>
+      <img src="app_check_images/alternatives_02.png" alt="The alternatives question and the start of the three hoodie cards">
+      <figcaption>The question, Dan’s reply, and the three alternative cards.</figcaption>
+    </figure>
+    <figure>
+      <img src="app_check_images/alternatives_03.png" alt="The full alternatives reply and the complete cards">
+      <figcaption>The complete reply and all three cards, including their prices and photos.</figcaption>
+    </figure>
+    <p>SQLite records <code>crew-left-chest-hoodie</code> size M at quantity 0. Dan said the quantity is 0 and returned three pullover hoodies. Their medium quantities in SQLite are Sailing Left Chest Hoodie 25, Yale Grandpa Hoodie 25, and District Vit Hoodie Vintage Bulldog 15, matching the reply.</p>
+  </section>
+</body>
+</html>

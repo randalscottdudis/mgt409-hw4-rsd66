@@ -1,0 +1,20 @@
+# Local data and real credentials
+/data/
+.env
+.env.*
+!.env.example
+
+# Installed dependencies, caches, and build output
+.venv/
+frontend/node_modules/
+frontend/dist/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Database sidecars and audit write scratch
+*.db
+*.db-shm
+*.db-wal
+output/audit_trail.lock
+output/audit_trail.json.tmp

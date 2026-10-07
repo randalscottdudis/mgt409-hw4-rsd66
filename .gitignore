@@ -1,0 +1,6 @@
+# Supplied data pack and design sources stay beside hw4/ and are not published.
+/data/
+/data.zip
+/design_references/
+/*.docx
+.DS_Store
